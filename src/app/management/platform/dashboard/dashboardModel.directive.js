@@ -13,23 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class WidgetDirective {
-  constructor() {
-    return {
+class DashboardModelDirective {
+  constructor () {
+    let directive = {
       restrict: 'E',
-      templateUrl: 'app/managementcomponents/widget/widget.html',
+      templateUrl: 'app/managementplatform/dashboard/dashboardModel.html',
       scope: {
-        widget: '='
+        id: '@id',
+        model: '@model',
+        metadata: '@metadata'
       },
-      controller: function ($scope) {
-        'ngInject';
-
-        $scope.$on('gridster-resized', function () {
-          $scope.$broadcast('onWidgetResize');
-        });
-      }
+      controller: DashboardModelController,
+      controllerAs: 'dashboardModelCtrl'
     };
+
+    return directive;
   }
 }
 
-export default WidgetDirective;
+class DashboardModelController {
+  constructor($scope) {
+    'ngInject';
+    this.$scope = $scope;
+    if (this.$scope.metadata) {
+      this.$scope.entity = JSON.parse(this.$scope.metadata);
+      this.$scope.entity.id = this.$scope.id;
+    }
+  }
+}
+
+export default DashboardModelDirective;

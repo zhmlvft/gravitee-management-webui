@@ -19,7 +19,7 @@ class WidgetChartLineDirective {
     this.scope = {
       data: "=data"
     };
-    this.templateUrl = 'app/components/widget/widget-line.html';
+    this.templateUrl = 'app/managementcomponents/widget/widget-line.html';
   }
 
   controller($scope, $rootScope) {

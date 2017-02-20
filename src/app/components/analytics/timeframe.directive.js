@@ -18,7 +18,7 @@ class TimeframeDirective {
 
     let directive = {
       restrict: 'E',
-      templateUrl: 'app/components/analytics/timeframe.html',
+      templateUrl: 'app/managementcomponents/analytics/timeframe.html',
       controller: TimeframeController,
       controllerAs: 'timeframeCtrl',
       bindToController: true

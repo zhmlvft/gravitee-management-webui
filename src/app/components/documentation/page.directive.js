@@ -17,7 +17,7 @@ class PageDirective {
   constructor () {
     let directive = {
       restrict: 'E',
-      templateUrl: 'app/components/documentation/page.html',
+      templateUrl: 'app/managementcomponents/documentation/page.html',
       scope: {
         page: '=',
         enableTryIt: '='

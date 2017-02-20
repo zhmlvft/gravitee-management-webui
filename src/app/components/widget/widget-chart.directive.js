@@ -19,7 +19,7 @@ class WidgetChartDirective {
     this.scope = {
       chart: '=chart'
     };
-    this.templateUrl = 'app/components/widget/widget-chart.html';
+    this.templateUrl = 'app/managementcomponents/widget/widget-chart.html';
   }
 
   controller($scope) {

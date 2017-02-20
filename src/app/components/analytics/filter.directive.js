@@ -18,7 +18,7 @@ class AnalyticsFilterDirective {
 
     let directive = {
       restrict: 'E',
-      templateUrl: 'app/components/analytics/filter.html',
+      templateUrl: 'app/managementcomponents/analytics/filter.html',
       controller: AnalyticsFilterController,
       controllerAs: 'analyticsFilterCtrl',
       bindToController: true

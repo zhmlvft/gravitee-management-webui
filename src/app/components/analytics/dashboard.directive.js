@@ -20,7 +20,7 @@ class DashboardDirective {
       scope: {
         model: '='
       },
-      templateUrl: 'app/components/analytics/dashboard.html',
+      templateUrl: 'app/managementcomponents/analytics/dashboard.html',
       controller: DashboardController,
       controllerAs: 'dashboardCtrl',
       bindToController: true

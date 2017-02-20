@@ -26,7 +26,7 @@ class ImageDirective {
         imageUrl: '=',
         imageBorderRadius: '@'
       },
-      templateUrl: 'app/components/image/image.html',
+      templateUrl: 'app/managementcomponents/image/image.html',
       controller: ImageController,
       controllerAs: 'imgCtrl'
     };

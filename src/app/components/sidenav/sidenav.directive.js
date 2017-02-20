@@ -115,7 +115,8 @@ class SideNavController {
   }
 
   isDisplayed() {
-    return !(this.$state.is('login') || this.$state.is('registration') || this.$state.is('confirm'));
+    return this.$state.includes('management') &&
+      !(this.$state.is('login') || this.$state.is('registration') || this.$state.is('confirm'));
   }
 
   goToUserPage() {

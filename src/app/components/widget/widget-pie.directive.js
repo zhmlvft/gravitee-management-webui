@@ -19,7 +19,7 @@ class WidgetChartPieDirective {
     this.scope = {
       data: "=data"
     };
-    this.templateUrl = 'app/components/widget/widget-pie.html';
+    this.templateUrl = 'app/managementcomponents/widget/widget-pie.html';
   }
 
   link(scope) {
