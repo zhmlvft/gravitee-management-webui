@@ -13,6 +13,9 @@
     "title": "Gravitee.io",
     "subtitle": "Developers portal",
     "version": "Version: {{version}}",
+    "pages": {
+      "title": "Documentation"
+    },
     "apis": {
       "more": "Show more",
       "search": "Search for APIs...",

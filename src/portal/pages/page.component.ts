@@ -13,27 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import angular = require('angular');
 
-export class HomeController {
-  private apis: any[];
-  private homepage: any;
+import PortalPagesService from "../../services/portalPages.service";
 
-  constructor (private resolvedApis, private resolvedHomepage) {
+const PageComponent: ng.IComponentOptions = {
+  bindings: {
+    page: '<'
+  },
+  template: require('./page.html'),
+  controller: function(PortalPagesService: PortalPagesService) {
     'ngInject';
-    this.apis = resolvedApis.data;
-    this.homepage = resolvedHomepage;
-  }
 
-  querySearch(query) {
-    var results = query ? this.apis.filter( this.createFilterFor(query) ) : this.apis;
-    return results;
-  }
-
-  createFilterFor(query) {
-    var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(item) {
-      return (item.value.indexOf(lowercaseQuery) === 0);
+    this.$onInit = function() {
+      PortalPagesService.cachePageConfiguration(this.page);
     };
   }
-}
+};
+
+export default PageComponent;

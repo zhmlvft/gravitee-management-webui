@@ -13,27 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import angular = require('angular');
 
-export class HomeController {
-  private apis: any[];
-  private homepage: any;
-
-  constructor (private resolvedApis, private resolvedHomepage) {
-    'ngInject';
-    this.apis = resolvedApis.data;
-    this.homepage = resolvedHomepage;
+const PortalPagesDirective: ng.IDirective = ({
+  scope: {
+    filecontent: '=',
+    filename: '='
+  },
+  link: function (scope: any, element: ng.IRootElementService) {
+    element.bind('change', function (changeEvent: any) {
+      let reader = new FileReader();
+      const file = changeEvent.target.files[0];
+      reader.onload = function (loadEvent: any) {
+        scope.$apply(function () {
+          scope.filecontent = loadEvent.target.result;
+          scope.filename = file.name;
+        });
+      };
+      reader.readAsText(file);
+    });
   }
-
-  querySearch(query) {
-    var results = query ? this.apis.filter( this.createFilterFor(query) ) : this.apis;
-    return results;
-  }
-
-  createFilterFor(query) {
-    var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(item) {
-      return (item.value.indexOf(lowercaseQuery) === 0);
-    };
-  }
-}
+});
+export default PortalPagesDirective;

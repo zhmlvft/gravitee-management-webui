@@ -13,27 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import angular = require('angular');
-
-export class HomeController {
-  private apis: any[];
-  private homepage: any;
-
-  constructor (private resolvedApis, private resolvedHomepage) {
+const PagesComponent: ng.IComponentOptions = {
+  bindings: {
+    pages: '<'
+  },
+  template: require('./pages.html'),
+  controller: function($stateParams, $location) {
     'ngInject';
-    this.apis = resolvedApis.data;
-    this.homepage = resolvedHomepage;
-  }
 
-  querySearch(query) {
-    var results = query ? this.apis.filter( this.createFilterFor(query) ) : this.apis;
-    return results;
-  }
-
-  createFilterFor(query) {
-    var lowercaseQuery = angular.lowercase(query);
-    return function filterFn(item) {
-      return (item.value.indexOf(lowercaseQuery) === 0);
+    this.$onInit = function() {
+      if (this.pages.length && !$stateParams.pageId) {
+        $location.url(`/pages/${this.pages[0].id}`);
+      }
     };
   }
-}
+};
+
+export default PagesComponent;
